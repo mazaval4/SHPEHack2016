@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var workerLocations = [];
+
+      function getLocations() {
+        var $xhr = $.ajax({
+          method: 'GET',
+          url: '/locations',
+          dataType: 'json',
+          contentType: 'application/json'
+        })
+
+        $xhr.done(function(newLocations) {
+          if ($xhr.status !== 200) {
+            return;
+          }
+
+          workerLocations = newLocations;
+          console.log(workerLocations);
+        });
+
+        $xhr.fail(function(err) {
+          console.log(err);
+        })
+      }
+      var tracking = setInterval(getLocations, 10000);
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 47.6112, lng: -122.3311},
+          zoom: 18,
+          disableDefaultUI: true
+        });
+
+        var myLoc = {lat: 47.6111, lng: -122.3300};
+
+        var marker = new google.maps.Marker({
+          position: myLoc,
+          map: map,
+          title: 'Current'
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh3NR9wc22pIA2MrmK_FjJaYsPbvjaKEE&callback=initMap">
+    </script>
+  </body>
+</html>

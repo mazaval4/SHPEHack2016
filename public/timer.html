@@ -1,0 +1,102 @@
+<html>
+    <head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script
+src="https://code.jquery.com/jquery-3.1.1.min.js"
+integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <center>
+            <h1 id = "demo"></h1>
+            <button type="button" class="btn btn-info">Call Leader</button><br><br>
+            <button type="button" class="btn btn-danger">Send Emergency Request</button>
+        </center>
+        <script>
+            function postLocation() {
+              var currentLocation = {};
+
+              if (!navigator.geolocation) {
+                return console.log('Geolocation is not supported by your browser.');
+              }
+
+              var success = function(position) {
+                currentLocation.latitude = position.coords.latitude;
+                currentLocation.longitude = position.coords.longitude;
+
+                var $xhr = $.ajax({
+                  method: 'POST',
+                  url: '/locations',
+                  dataType: 'json',
+                  contentType: 'application/json',
+                  data: JSON.stringify(currentLocation)
+                });
+
+                $xhr.done(function() {
+                  console.log('posted');;
+                });
+
+                $xhr.fail(function(error) {
+                  console.log(error);
+                });
+              };
+
+              var failure = function() {
+                console.log('Could not obtain your location.');
+              };
+
+              navigator.geolocation.getCurrentPosition(success, failure);
+
+            };
+            
+            var tracking = setInterval(postLocation, 5000);
+
+            var myVar = setInterval(myTimer, 1000);
+            var seconds = 0;
+            var minutes = 5;
+            var res;
+
+            function myTimer()
+            {
+
+                if(seconds < 10)
+                {
+                    seconds--;
+                    var temp = leadingZero(seconds);
+                    res = minutes.toString()+":"+temp;
+                }
+                else
+                {
+                    seconds--;
+                    res = minutes.toString()+":"+seconds.toString();
+                }
+
+                if(seconds == -1)
+                {
+                    minutes--;
+                    seconds = 59;
+                    res = minutes.toString()+":"+seconds.toString();
+                }
+                if(minutes == 0 && seconds == 0 )
+                {
+                    window.alert("TIMES UP");
+                    minutes = 5;
+                }
+
+                document.getElementById("demo").innerHTML = res;
+            }
+
+            function leadingZero(number)
+            {
+                return "0"+number.toString();
+            }
+        </script>
+    </body>
+</html>

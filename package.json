@@ -1,0 +1,24 @@
+{
+  "name": "shpehack2016",
+  "version": "0.1.0",
+  "description": "Agricultural Resource Manager",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesseseligman/SHPEHack2016.git"
+  },
+  "author": "Jesse Seligman <jesseseligman@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jesseseligman/SHPEHack2016/issues"
+  },
+  "homepage": "https://github.com/jesseseligman/SHPEHack2016#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "nodemon": "^1.11.0"
+  }
+}

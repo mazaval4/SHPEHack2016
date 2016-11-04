@@ -5,12 +5,12 @@ body {
   font: normal 14px Roboto,arial,sans-serif;
 }
 
-.container {
-    padding: 25px;
-    position: fixed;
+#container {
+  margin-top: 40px;
 }
 
 .form-login {
+    font: 4rem;
     background-color: #EDEDED;
     padding-top: 10px;
     padding-bottom: 20px;
@@ -22,19 +22,27 @@ body {
     box-shadow:0 1px 0 #cfcfcf;
 }
 
-h4 { 
- border:0 solid #fff; 
+h4 {
+ border:0 solid #fff;
  border-bottom-width:1px;
  padding-bottom:10px;
  text-align: center;
 }
 
-.form-control {
-    border-radius: 10px;
-}
-
 .wrapper {
-    text-align: center;
+  text-align: center;
 }
 
+#clock-btn {
+  margin-top: 20px;
+}
 
+#clock-in {
+  font-size: 4rem;
+    color:white;
+}
+
+#question
+{
+    color:white;
+}

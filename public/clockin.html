@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="clockin.css">
+    <title>ARM</title>
+  </head>
+  <body background= "http://wppshack.com/wp-content/uploads/2015/02/Deer-overlooking-a-lake-at-sunset_www.WppShack.com_-e1424856052322.jpg" >
+    <div class="container">
+      
+    <div id="container" class="row">
+      <div class="col-md-offset-5 col-md-3">
+        <h4 id="clock-in">Clock In</h4>
+
+          <div class="form-group">
+            <input type="text" id="workerCode" class="form-control" placeholder="Worker Code" />
+
+          </div>
+          <br/>
+          <div class="checkbox">
+          <label id="question">
+            <input  type="checkbox" name="name" value=""/>
+                    Do you consent to having your location tracked during this shift?
+              </label>
+          </div>
+              <br/>
+            <div class="wrapper">
+              <span class="group-btn">
+                <button class="btn btn-default" id="clock-btn" onclick="clockIn()" >Clock In
+                </button>
+                  <a class="btn btn-default" id="clock-btn" href="./index.html" >Go back
+                </a>
+              </span>
+            </div>
+
+      </div>
+    </div>
+  </div>
+
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+      function clockIn() {
+        location.assign('timer.html');
+      }
+    </script>
+  </body>
+</html>
